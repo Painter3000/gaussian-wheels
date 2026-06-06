@@ -1,0 +1,23 @@
+name: Build Pre-built Wheel
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: pytorch/pytorch:2.8.0-cuda12.8-cudnn9-devel
+
+    steps:
+      - name: Install build tools
+        run: pip install wheel setuptools
+
+      - name: Build wheel
+        run: pip wheel --no-deps --wheel-dir /tmp/wheels/ git+https://github.com/graphdeco-inria/diff-gaussian-rasterization
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: diff-gaussian-rasterization-cp310-cu128
+          path: /tmp/wheels/*.whl
