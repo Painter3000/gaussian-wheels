@@ -31,6 +31,14 @@ This repository provides a freshly compiled wheel for:
 No official pre-built wheel for `diff-gaussian-rasterization` + cu128 exists.
 This remains the only known public wheel for Blackwell + torch 2.8.0.
 
+## Download
+
+The wheel is hosted on Hugging Face:
+
+```
+https://huggingface.co/spaces/painter3000/calculate_splat_gemini/resolve/main/wheels/diff_gaussian_rasterization-0.0.0-cp310-cp310-linux_x86_64.whl
+```
+
 ## How to use on Hugging Face ZeroGPU Spaces
 
 In your `app.py`:
@@ -44,7 +52,7 @@ try:
 except ImportError:
     subprocess.check_call([
         sys.executable, "-m", "pip", "install",
-        "https://huggingface.co/spaces/painter3000/YOUR_SPACE/resolve/main/wheels/diff_gaussian_rasterization-0.0.0-cp310-cp310-linux_x86_64.whl"
+        "https://huggingface.co/spaces/painter3000/calculate_splat_gemini/resolve/main/wheels/diff_gaussian_rasterization-0.0.0-cp310-cp310-linux_x86_64.whl"
     ])
     import diff_gaussian_rasterization
 ```
@@ -64,6 +72,12 @@ Built via GitHub Actions using:
 > causes **Out of Memory (OOM)** errors on GitHub Actions runners (Exit code 137). 
 > Since ZeroGPU Spaces use RTX Pro 6000 Blackwell (sm_120), this wheel is optimized 
 > for that specific architecture to avoid compilation failures.
+
+## Related repository
+
+> 👉 Also check out the companion wheel for `xformers`:
+> [Painter3000/xformers-wheel](https://github.com/Painter3000/xformers-wheel)
+> — freshly compiled for PyTorch 2.8.0 + Blackwell with `sparse_mv_attention` optimization.
 
 ## Background
 
