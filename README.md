@@ -19,6 +19,13 @@ This repository provides a freshly compiled wheel for:
 - Linux x86_64
 - CUDA architecture: **sm_120 (Blackwell only)**
 
+## ✅ Tested & Verified
+
+**Tested on Hugging Face ZeroGPU with FaceLift** — ✅ Works perfectly!
+- Multi-view consistent 3D reconstruction
+- `sparse_mv_attention` optimized for Blackwell
+- All 6 views render correctly: frontal, 45° left, 90° profile left, back, 90° profile right, 45° right
+
 ## How to use on Hugging Face ZeroGPU Spaces
 
 In your `app.py`:
@@ -59,8 +66,8 @@ This issue affects all Spaces using CUDA extensions that require compilation,
 including `diff-gaussian-rasterization`, `simple-knn`, and similar packages
 from the 3D Gaussian Splatting ecosystem.
 
-Greetings to the ~50-200 people worldwide who are dealing with exactly 
-this problem right now. You're not alone! 👋😄
+**Greetings to the ~50-200 people worldwide who are dealing with exactly 
+this problem right now. The solution exists now!** 👋😄
 
 ## Related issues
 - https://discuss.huggingface.co/t/nvidia-rtx-pro-6000-instead-of-h200-for-zerogpu/175960
