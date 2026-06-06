@@ -20,6 +20,8 @@ jobs:
       - name: Build wheel
         run: |
           export PATH="/usr/local/cuda/bin:$PATH"
+          export TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;9.0;12.0"
+          export FORCE_CUDA=1
           pip wheel --no-deps --wheel-dir /tmp/wheels/ \
             git+https://github.com/graphdeco-inria/diff-gaussian-rasterization
 
