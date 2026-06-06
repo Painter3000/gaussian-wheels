@@ -1,23 +1,30 @@
 name: Build Pre-built Wheel
-
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
       image: pytorch/pytorch:2.8.0-cuda12.8-cudnn9-devel
-
     steps:
       - name: Install git and build tools
         run: |
-          apt-get update
+          apt-get update -y
           apt-get install -y git
-          pip install wheel setuptools
+          pip install --no-cache-dir wheel setuptools
+
+      - name: Create output directory
+        run: mkdir -p /tmp/wheels/
 
       - name: Build wheel
-        run: pip wheel --no-deps --wheel-dir /tmp/wheels/ git+https://github.com/graphdeco-inria/diff-gaussian-rasterization
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          pip wheel --no-deps --wheel-dir /tmp/wheels/ \
+            git+https://github.com/graphdeco-inria/diff-gaussian-rasterization
+
+      - name: List built wheels
+        run: ls -la /tmp/wheels/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
