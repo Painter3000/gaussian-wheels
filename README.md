@@ -26,6 +26,11 @@ This repository provides a freshly compiled wheel for:
 - `sparse_mv_attention` optimized for Blackwell
 - All 6 views render correctly: frontal, 45° left, 90° profile left, back, 90° profile right, 45° right
 
+## Status (Juni 2026)
+
+No official pre-built wheel for `diff-gaussian-rasterization` + cu128 exists.
+This remains the only known public wheel for Blackwell + torch 2.8.0.
+
 ## How to use on Hugging Face ZeroGPU Spaces
 
 In your `app.py`:
